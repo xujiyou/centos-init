@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PASSWORD='kf-2020'
+PASSWORD="kf-2020"
 
 # 系统更新
 yum update -y

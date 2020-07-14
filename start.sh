@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SERVERS="192.168.225.2 192.168.225.3 192.168.225.4 192.168.225.5 192.168.225.6 192.168.225.7 192.168.225.8 192.168.225.9"
-PASSWORD='kf-2020'
+PASSWORD="kf-2020"
 
 # 将脚本拷贝到全部机器
 scp_copy_to_other() {
@@ -17,9 +17,9 @@ scp_copy_to_other() {
 
 # 执行初始化脚本
 ssh_exec_to_other() {
+  ID="$(echo $1 | awk -F. '{print $NF}')"
   expect -c "
   set timeout 30;
-  ID=$(echo $1 | awk -F. '{print $NF}')
   ssh root@$1 "bash /root/init.sh server-0$((ID-1))"
   expect {
     *password:* {send $PASSWORD\r; exp_continue;}
