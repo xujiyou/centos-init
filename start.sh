@@ -20,7 +20,7 @@ ssh_exec_to_other() {
   ID="$(echo $1 | awk -F. '{print $NF}')"
   expect -c "
   set timeout 30;
-  spawn ssh root@$1 'bash /root/init.sh server-0$((ID-1))'
+  spawn ssh root@$1 bash /root/init.sh server-0$((ID-1))
   expect {
     *password:* {send $PASSWORD\r; exp_continue;}
     *(yes/no)?* {send yes\r; exp_continue;}
@@ -43,7 +43,7 @@ scp_copy_to_all
 ssh_exec_nopass_to_other() {
   expect -c "
   set timeout 30;
-  spawn ssh root@$1 'bash /root/nopass-login.sh'
+  spawn ssh root@$1 bash /root/nopass-login.sh
   expect {
     *password:* {send $PASSWORD\r; exp_continue;}
     *(yes/no)?* {send yes\r; exp_continue;}
