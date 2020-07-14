@@ -24,7 +24,7 @@ auto_ssh_copy_id() {
 ssh_copy_id_to_all() {
     for SERVER in $SERVERS
     do
-        sudo yum -y install expect
+        yum -y install expect
         auto_ssh_copy_id $SERVER $PASSWORD
     done
 }

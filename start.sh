@@ -31,7 +31,7 @@ ssh_exec_to_other() {
 scp_copy_to_all() {
   for SERVER in $SERVERS
     do
-        sudo yum -y install expect
+        yum -y install expect
         scp_copy_to_other $SERVER
         ssh_exec_to_other $SERVER
     done
